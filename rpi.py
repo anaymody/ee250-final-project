@@ -47,7 +47,7 @@ while True:
             grovepi.digitalWrite(PORT_BUZZER, 1)
             advice = app.MY_APP
             CACHE = '  ' + advice['init']()
-            print(CAHCE)
+            print(CACHE)
 
             # Switch app
             # app = (app + 1) % len(APPS)
