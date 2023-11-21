@@ -8,10 +8,8 @@ import grovepi
 import grove_rgb_lcd as lcd
 
 # Modules for my apps
-import my_reddit
-import my_weather
 #import my_app  # TODO: Create my_app.py using another API, following the examples as a template
-import my_app
+import app
 
 PORT_BUZZER = 2     # D2
 PORT_BUTTON = 4     # D4
@@ -26,10 +24,8 @@ lcd.setRGB(0, 128, 0)
 
 # Installed Apps!
 APPS = [
-    my_weather.WEATHER_APP,
-    my_reddit.QOTD_APP,
     # TODO: Add your new app here
-    my_app.MY_APP
+    app.MY_APP
 ]
 
 # Cache to store values so we save time and don't abuse the APIs
