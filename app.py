@@ -8,7 +8,7 @@ def my_app():
     if r.status_code == 200: # Status: OK
         data = r.json()
         
-        print(data)
+        print(data['slip']['advice'])
         return data['slip']['advice']
 
     else:
