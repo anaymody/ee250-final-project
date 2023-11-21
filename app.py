@@ -27,7 +27,7 @@ def my_app():
 
 MY_APP = {
     'name': 'Stock Prices',
-    'init': myapp
+    'init': my_app
 }
 
 
