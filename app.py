@@ -1,32 +1,20 @@
 import requests
 import json
 
-# Alpha Vantage API: https://www.alphavantage.co/documentation/
-AV_KEY = "UKRTY6HAA7CAQMNO"
-
-SYMBOL = "IBM"
-
 def my_app():
-    url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + SYMBOL + '&apikey=' + AV_KEY
-    r = requests.get(url)    
+    url = 'https://api.adviceslip.com/advice'
+    r = requests.get(url)
 
     if r.status_code == 200: # Status: OK
         data = r.json()
 
 
-        date = data["Meta Data"]["3. Last Refreshed"]
-        information = data["Time Series (Daily)"][date]
         
-        day_open = information["1. open"]
-        day_high = information["2. high"]
-        day_close = information["4. close"]
-    
-        return day_open, day_high, day_close
+        print(data)
 
     else:
-        print('error: got response code %d' % response.status_code)
-        print(response.text)
-        return 0.0, 0.0, 0.0
+        print("Error!")
+        
 
 def myapp_init():
     day_open, day_high, day_close = my_app()
