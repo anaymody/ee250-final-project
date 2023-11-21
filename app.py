@@ -32,4 +32,4 @@ MY_APP = {
 
 
 if __name__ == '__main__':
-    myapp()
+    my_app()
