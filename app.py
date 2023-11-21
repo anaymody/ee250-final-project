@@ -15,24 +15,21 @@ def my_app():
         print("Error!")
         
 
-def myapp_init():
-    day_open, day_high, day_close = my_app()
-    day_open = round(float(day_open), 2)
-    day_close = round(float(day_close), 2)
-    day_high = round(float(day_high), 2)
+# def myapp_init():
+#     advice = myapp()
 
-    output = f"Open: ${day_open}, High: ${day_high}, Close: ${day_close}"
-    print('Information for {}: {}'.format(SYMBOL, output))
+#     output = f"Open: ${day_open}, High: ${day_high}, Close: ${day_close}"
+#     print('Information for {}: {}'.format(SYMBOL, output))
 
     
-    return output
+#     return output
 
 
 MY_APP = {
     'name': 'Stock Prices',
-    'init': myapp_init
+    'init': myapp
 }
 
 
 if __name__ == '__main__':
-    myapp_init()
+    myapp()
