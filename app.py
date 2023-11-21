@@ -118,16 +118,16 @@ def doDecrypt(enc_sign_file, sign_key_file, out_msg_file):
 
     # raises an InvalidSignature exception if signatures don't match
     # Use the sign_key.verify() function
-    sign_key.verify(
-        ??????,              # fill me in
-        ??????,              # fill me in
-        padding.PSS(
-            mgf=padding.MGF1(hashes.SHA256()),
-            salt_length=padding.PSS.MAX_LENGTH
-        ),
-        utils.Prehashed(h)
-    )
-    print("Success: received and computed digest match!")
+    # sign_key.verify(
+    #     ??????,              # fill me in
+    #     ??????,              # fill me in
+    #     padding.PSS(
+    #         mgf=padding.MGF1(hashes.SHA256()),
+    #         salt_length=padding.PSS.MAX_LENGTH
+    #     ),
+    #     utils.Prehashed(h)
+    # )
+    # print("Success: received and computed digest match!")
 
 
     # print("Decrypt message")
