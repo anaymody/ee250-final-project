@@ -11,28 +11,21 @@ import grove_rgb_lcd as lcd
 #import my_app  # TODO: Create my_app.py using another API, following the examples as a template
 import app
 
-PORT_BUZZER = 2     # D2
-PORT_BUTTON = 4     # D4
+GEN_ADVICE = 4     # D4
+SAVE_ADVICE = 2     # D2
 
 LCD_LINE_LEN = 16
 
 # Setup
-grovepi.pinMode(PORT_BUZZER, "OUTPUT")
-grovepi.pinMode(PORT_BUTTON, "INPUT")
+grovepi.pinMode(SAVE_ADVICE, "INPUT")
+grovepi.pinMode(GEN_ADVICE, "INPUT")
 
 lcd.setRGB(0, 128, 0)
-
-# Installed Apps!
-# APPS = [
-#     # TODO: Add your new app here
-#     app.MY_APP
-# ]
 
 advice = app.MY_APP
 
 CACHE = '  ' + advice['init']()
 
-# app = 0     # Active app
 ind = 0     # Output index
 
 potentiometer = 0
@@ -42,33 +35,19 @@ grovepi.pinMode(potentiometer, "INPUT")
 while True:
     try:
         # Check for input
-        if grovepi.digitalRead(PORT_BUTTON):
-            # BEEP!
-            grovepi.digitalWrite(PORT_BUZZER, 1)
+        if grovepi.digitalRead(GEN_ADVICE):
             advice = app.MY_APP
             CACHE = '  ' + advice['init']()
 
-            # Switch app
-            # app = (app + 1) % len(APPS)
+            # Reset index
             ind = 0
-        
-        curr_threshold = round((grovepi.analogRead(potentiometer) / 1023 * 5)) #400 is the max range
-        if curr_threshold == 0:
-            lcd.setRGB(0,0,0)
-        elif curr_threshold == 1:
-            lcd.setRGB(0,0,255)
-        elif curr_threshold == 2:
-            lcd.setRGB(0,255,0)
-        elif curr_threshold == 3:
-            lcd.setRGB(255,0,0)
-        elif curr_threshold == 4:
-            lcd.setRGB(0,255,255)
-            
+
+        if grovepi.digitalRead(SAVE_ADVICE):
+            print(CACHE[2:])
 
 
         time.sleep(0.1)
 
-        grovepi.digitalWrite(PORT_BUZZER, 0)
 
         # Display app name
         lcd.setText_norefresh(advice['name'])
@@ -87,7 +66,7 @@ while True:
         lcd.setRGB(0, 0, 0)
 
         # Turn buzzer off just in case
-        grovepi.digitalWrite(PORT_BUZZER, 0)
+        grovepi.digitalWrite(SAVE_ADVICE, 0)
 
         break
 
