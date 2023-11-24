@@ -27,6 +27,7 @@ advice = app.MY_APP
 CACHE = '  ' + advice['init']()
 
 ind = 0     # Output index
+saved = False
 
 potentiometer = 0
 grovepi.pinMode(potentiometer, "INPUT")
@@ -41,9 +42,11 @@ while True:
 
             # Reset index
             ind = 0
+            saved = False
 
-        if grovepi.digitalRead(SAVE_ADVICE):
+        if grovepi.digitalRead(SAVE_ADVICE) and not saved:
             print(CACHE[2:])
+            saved = True
 
 
         time.sleep(0.1)
