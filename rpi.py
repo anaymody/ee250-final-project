@@ -41,7 +41,7 @@ lcd.setRGB(0, 128, 0)
 
 advice = app.MY_APP
 
-CACHE = '  ' + advice['init']()
+CACHE = '  ' + app.decrypt(app.publicKey, advice['init']())
 
 ind = 0     # Output index
 saved = False

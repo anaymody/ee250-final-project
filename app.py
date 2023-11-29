@@ -18,10 +18,12 @@ def genkeys():
     # rsa.newkeys method,this method accepts 
     # key length as its parameter
     # key length should be atleast 16
-    publicKey, privKey = rsa.newkeys(512)
+    pubKey, privKey = rsa.newkeys(512)
 
     global privateKey
     privateKey = privKey
+    global publicKey
+    publicKey = pubKey
 
     publicKeyFile = open("publicKeyFile.txt", "w")
 
@@ -63,7 +65,7 @@ def my_app():
         data = r.json()
         
         print(data['slip']['advice'])
-        return data['slip']['advice']
+        return encrypt(data['slip']['advice'])
 
     else:
         print("Error!")
