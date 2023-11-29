@@ -61,7 +61,7 @@ import rsa
 
 
 def my_app():
-    (pubKey, privKey) = rsa.newkeys(1024)
+    (pubKey, privKey) = rsa.newkeys(2048)
     url = 'https://api.adviceslip.com/advice'
     r = requests.get(url)
 
