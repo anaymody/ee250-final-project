@@ -12,7 +12,7 @@ import json
 
 import rsa
 
-publicKey = 0
+privateKey = 0
 
 def genkeys():
     # generate public and private keys with 
@@ -21,15 +21,15 @@ def genkeys():
     # key length should be atleast 16
     pubKey, privKey = rsa.newkeys(512)
 
-    global privateKey
+    global publicKey
     privateKey = privKey
     publicKey = pubKey
 
-    publicKeyFile = open("publicKeyFile.txt", "w")
+    # publicKeyFile = open("publicKeyFile.txt", "w")
 
-    publicKeyFile.write(str(publicKey))
+    # publicKeyFile.write(str(publicKey))
 
-    publicKeyFile.close()
+    # publicKeyFile.close()
 
 def encrypt(message):
     # this is the string that we will be encrypting
@@ -39,25 +39,25 @@ def encrypt(message):
     # encode to byte string before encryption 
     # with encode method
     encMessage = rsa.encrypt(message.encode(), 
-                            privateKey)
+                            publicKey)
 
     print("original string: ", message)
     print("encrypted string: ", encMessage)
     return encMessage
 
-def decrypt(pubKey, encMessage):
+def decrypt(privKey, encMessage):
     # the encrypted message can be decrypted 
     # with ras.decrypt method and private key
     # decrypt method returns encoded byte string,
     # use decode method to convert it to string
     # public key cannot be used for decryption
-    decMessage = rsa.decrypt(encMessage, pubKey).decode()
+    decMessage = rsa.decrypt(encMessage, privKey).decode()
 
     print("decrypted string: ", decMessage)
     return decMessage
 
 def getPubKey():
-    return publicKey
+    return privateKey
 
 
 def my_app():
