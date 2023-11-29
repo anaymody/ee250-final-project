@@ -45,13 +45,13 @@ def encrypt(message):
     print("encrypted string: ", encMessage)
     return encMessage
 
-def decrypt(publicKey, encMessage):
+def decrypt(pubKey, encMessage):
     # the encrypted message can be decrypted 
     # with ras.decrypt method and private key
     # decrypt method returns encoded byte string,
     # use decode method to convert it to string
     # public key cannot be used for decryption
-    decMessage = rsa.decrypt(encMessage, publicKey).decode()
+    decMessage = rsa.decrypt(encMessage, pubKey).decode()
 
     print("decrypted string: ", decMessage)
     return decMessage
