@@ -12,6 +12,7 @@ import json
 
 import rsa
 
+publicKey = 0
 
 def genkeys():
     # generate public and private keys with 
@@ -22,7 +23,6 @@ def genkeys():
 
     global privateKey
     privateKey = privKey
-    global publicKey
     publicKey = pubKey
 
     publicKeyFile = open("publicKeyFile.txt", "w")
