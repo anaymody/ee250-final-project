@@ -8,6 +8,8 @@ import grovepi
 import grove_rgb_lcd as lcd
 import paho.mqtt.client as mqtt
 import time
+import rsa
+
 
 # Modules for my apps
 #import my_app  # TODO: Create my_app.py using another API, following the examples as a template
@@ -41,7 +43,7 @@ lcd.setRGB(0, 128, 0)
 
 advice = app.MY_APP
 
-CACHE = '  ' + app.decrypt(app.getPubKey(), advice['init']())
+CACHE = '  ' + rsa.decrypt(advice['init'](), app.getPubKey()).decode()
 
 ind = 0     # Output index
 saved = False

@@ -69,7 +69,7 @@ def my_app():
         data = r.json()
         
         print(data['slip']['advice'])
-        return encrypt(data['slip']['advice'])
+        return rsa.encrypt(data['slip']['advice'].encode(), publicKey)
 
     else:
         print("Error!")
