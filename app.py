@@ -25,7 +25,7 @@ def genkeys():
 
     publicKeyFile = open("publicKeyFile.txt", "w")
 
-    publicKeyFile.write(publicKey)
+    publicKeyFile.write(str(publicKey))
 
     publicKeyFile.close()
 
