@@ -37,7 +37,7 @@ def on_connect(client, userdata, flags, rc):
 
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
-    print(msg)
+    print(msg.payload)
 
 if __name__ == '__main__':
     #this section is covered in publisher_and_subscriber_example.py
