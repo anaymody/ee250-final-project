@@ -55,6 +55,7 @@ def decrypt(publicKey, encMessage):
     return decMessage
 
 def my_app():
+    genkeys()
     url = 'https://api.adviceslip.com/advice'
     r = requests.get(url)
 
