@@ -63,7 +63,7 @@ def my_app():
         data = r.json()
         
         print(data['slip']['advice'])
-        return encrypt(data['slip']['advice'])
+        return data['slip']['advice']
 
     else:
         print("Error!")
