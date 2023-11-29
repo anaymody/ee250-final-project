@@ -19,7 +19,7 @@ def genkeys():
     # rsa.newkeys method,this method accepts 
     # key length as its parameter
     # key length should be atleast 16
-    pubKey, privKey = rsa.newkeys(512)
+    pubKey, privKey = rsa.newkeys(1024)
 
     global publicKey
     privateKey = privKey
