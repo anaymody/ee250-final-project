@@ -43,7 +43,10 @@ lcd.setRGB(0, 128, 0)
 
 advice = app.MY_APP
 
-CACHE = '  ' + rsa.decrypt(advice['init'](), app.getPubKey()).decode()
+(encrypted, key) = advice['init']()
+message = rsa.decrypt(encrypted, key)
+message = message.decode('utf8')
+CACHE = '  ' + message
 
 ind = 0     # Output index
 saved = False
@@ -57,7 +60,10 @@ while True:
         # Check for input
         if grovepi.digitalRead(GEN_ADVICE):
             advice = app.MY_APP
-            CACHE = '  ' + advice['init']()
+            (encrypted, key) = advice['init']()
+            message = rsa.decrypt(encrypted, key)
+            message = message.decode('utf8')
+            CACHE = '  ' + message
 
             # Reset index
             ind = 0
