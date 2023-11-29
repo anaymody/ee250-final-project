@@ -6,10 +6,18 @@ sys.path.append('/home/pi/Dexter/GrovePi/Software/Python')
 
 import grovepi
 import grove_rgb_lcd as lcd
+import paho.mqtt.client as mqtt
+import time
 
 # Modules for my apps
 #import my_app  # TODO: Create my_app.py using another API, following the examples as a template
 import app
+
+def on_connect(client, userdata, flags, rc):
+    print("Connected to server (i.e., broker) with result code "+str(rc))
+
+    #subscribe to topics of interest here
+    client.subscribe("jjzhu/savebutton")
 
 GEN_ADVICE = 4     # D4
 SAVE_ADVICE = 2     # D2
