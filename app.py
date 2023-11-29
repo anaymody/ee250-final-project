@@ -41,6 +41,7 @@ def encrypt(message):
 
     print("original string: ", message)
     print("encrypted string: ", encMessage)
+    return encMessage
 
 def decrypt(publicKey, encMessage):
     # the encrypted message can be decrypted 
@@ -51,6 +52,7 @@ def decrypt(publicKey, encMessage):
     decMessage = rsa.decrypt(encMessage, publicKey).decode()
 
     print("decrypted string: ", decMessage)
+    return decMessage
 
 def my_app():
     url = 'https://api.adviceslip.com/advice'
@@ -60,7 +62,7 @@ def my_app():
         data = r.json()
         
         print(data['slip']['advice'])
-        return data['slip']['advice']
+        return encrypt(data['slip']['advice'])
 
     else:
         print("Error!")
