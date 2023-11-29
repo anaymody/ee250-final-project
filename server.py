@@ -38,7 +38,7 @@ def on_connect(client, userdata, flags, rc):
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
     print(str(msg.payload, "utf-8"))
-    advicefile = open("advice.html", "w")
+    advicefile = open("advice.html", "a")
     advicefile.write("<li>" + str(msg.payload, "utf-8") + "</li>")
 
 if __name__ == '__main__':
