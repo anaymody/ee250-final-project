@@ -19,10 +19,19 @@ def on_connect(client, userdata, flags, rc):
     #subscribe to topics of interest here
     client.subscribe("jjzhu/savebutton")
 
+def on_message(client, userdata, msg):
+    print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
+
 GEN_ADVICE = 4     # D4
 SAVE_ADVICE = 2     # D2
 
 LCD_LINE_LEN = 16
+
+client = mqtt.Client()
+client.on_message = on_message
+client.on_connect = on_connect
+client.connect(host="test.mosquitto.org", port=1883, keepalive=60)
+client.loop_start()
 
 # Setup
 grovepi.pinMode(SAVE_ADVICE, "INPUT")
@@ -55,6 +64,7 @@ while True:
         if grovepi.digitalRead(SAVE_ADVICE) and not saved:
             print(CACHE[2:])
             saved = True
+            client.publish("jjzhu/savebutton", CACHE[2:])
 
 
         time.sleep(0.1)
