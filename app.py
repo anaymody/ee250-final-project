@@ -56,6 +56,10 @@ def decrypt(pubKey, encMessage):
     print("decrypted string: ", decMessage)
     return decMessage
 
+def getPubKey():
+    return publicKey
+
+
 def my_app():
     genkeys()
     url = 'https://api.adviceslip.com/advice'
